@@ -1,0 +1,17 @@
+/* styles.css */
+
+/* General styles */
+body {
+    font-family: 'X Yekan', sans-serif; /* Apply IranSans font */
+}
+
+nav a {
+    background-color: transparent;
+    padding: 10px 15px;
+    color: white; /* Default text color for links */
+}
+
+nav a:hover {
+    color: rgb(255, 230, 0); /* Change text color on hover */
+    transition: color 0.3s ease;
+}
