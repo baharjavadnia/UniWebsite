@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        #datetime {
+            font-size: 16px; 
+        }
+        .dark-mode {
+            background-color: #1a202c;
+            color: white;
+        }
+        .grid {
+            font-size: 14px; /* تغییر اندازه فونت */
+        }
+        .highlight {
+            background-color: #ebf8ff;
+        }
+        .odd-row {
+            background-color: #f1f5f9;
+        }
+        .table-link:hover {
+            color: #3182ce;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .term-cell {
+            cursor: pointer; /* تغییر نشانگر به pointer هنگام هاور */
+        }
+        .term-cell:hover {
+            background-color: #5089cf; /* پس‌زمینه تیره‌تر آبی هنگام هاور */
+            color: white; /* تغییر رنگ متن در حالت هاور */
+        }
+        /* استایل جدول */
+        .table-header {
+            background-color: #3b82f6; /* رنگ آبی */
+            color: white;
+        }
+        .table-row {
+            background-color: #f0f9ff; /* رنگ پس‌زمینه ردیف‌ها */
+        }
+        .table-row:nth-child(even) {
+            background-color: #e0f2fe; /* رنگ پس‌زمینه ردیف‌های زوج */
+        }
+    </style>
+    <title>اطلاعات جامع دانشجو</title>
+</head>
+<body class="bg-blue-50">
+    <header class="flex justify-between items-center p-4 bg-blue-800 text-white"> 
+        <nav class="flex space-x-4 ml-auto"> 
+            <div class="flex space-x-4"> 
+                <a href="#" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
+                <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">اطلاعیه ها</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سیستم پشتیبانی</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">تماس با ما</a> 
+            </div> 
+        </nav> 
+        <div id="datetime" class="text-left ml-10"></div> 
+    </header>
+
+    <main class="flex justify-center p-6">
+        <section class="w-full max-w-5xl mx-auto">
+            <h2 class="text-xl font-bold mb-4">اطلاعات ترمی دانشجو</h2>
+            <div class="bg-white shadow-md rounded-lg p-6">
+                <div class="flex items-start">
+                    <div class="mr-8 mt-3" style="width: 90px; height: 80px; background-color: #bfc7eb; border-radius: 100%;"></div>
+                    <div class="ml-1 w-full">
+                        <div class="grid grid-cols-4 gap-1 mr-14 mt-4 mb-4 text-right">
+                            <span>شماره دانشجویی: ۴۰۱۱۰۶۷۰۰۶</span>
+                            <span>نام: سمانه</span>
+                            <span>نام خانوادگی: حسینی</span>
+                            <span>شماره ترم : ۲</span>
+                        </div>
+                        <div class="grid grid-cols-4 gap-1 mr-14 mt-4 mb-4 text-right">
+                            <span>وضع ترم : مشغول به تحصیل</span>
+                            <span>شرح ترم : نیمسال دوم تحصیلی ۱۴۰۴-۱۴۰۳</span>
+                            <span>نوع ترم : عادی</span>
+                            <span>وضع مشروطی : عادی</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="text-xl font-bold mb-4 mt-9">جدول نمرات</h2>
+            <div class="bg-white shadow-md rounded-lg p-4 mt-4 overflow-auto">
+                <table class="min-w-full border-collapse border border-blue-200">
+                    <thead class="table-header">
+                        <tr>
+                            <th class="border border-blue-200 p-2">شماره ردیف</th>
+                            <th class="border border-blue-200 p-2">درس</th>
+                            <th class="border border-blue-200 p-2">نوع واحد</th>
+                            <th class="border border-blue-200 p-2">تعداد واحد</th>
+                            <th class="border border-blue-200 p-2">وضع نمره</th>
+                            <th class="border border-blue-200 p-2">استاد درس</th>
+                            <th class="border border-blue-200 p-2">نمره دریافتی</th>
+                            <th class="border border-blue-200 p-2">اعتراض</th>
+                            <th class="border border-blue-200 p-2">نتیجه نمره</th>
+                            <th class="border border-blue-200 p-2">وضع درس</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td class="border border-blue-200 p-2 text-center">۱</td>
+                            <td class="border border-blue-200 p-2">موسیقی در انیمیشن</td>
+                            <td class="border border-blue-200 p-2">تئوری</td>
+                            <td class="border border-blue-200 p-2">۳</td>
+                            <td class="border border-blue-200 p-2">اعلام شده</td>
+                            <td class="border border-blue-200 p-2">دکتر شفیعی</td>
+                            <td class="border border-blue-200 p-2">۱۶</td>
+                            <td class="border border-blue-200 p-2"><span class="text-black">اعتراض</span></td>
+                            <td class="border border-blue-200 p-2">قبول</td>
+                            <td class="border border-blue-200 p-2">عادی</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="border border-blue-200 p-2 text-center">۲</td>
+                            <td class="border border-blue-200 p-2">اخلاق اسلامی</td>
+                            <td class="border border-blue-200 p-2">تئوری</td>
+                            <td class="border border-blue-200 p-2">۲</td>
+                            <td class="border border-blue-200 p-2">اعلام شده</td>
+                            <td class="border border-blue-200 p-2">دکتر رضایی</td>
+                            <td class="border border-blue-200 p-2">۱۴</td>
+                            <td class="border border-blue-200 p-2"><span class="text-black">اعتراض</span></td>
+                            <td class="border border-blue-200 p-2">قبول</td>
+                            <td class="border border-blue-200 p-2">عادی</td>
+                        </tr>
+						<tr class="table-row">
+                            <td class="border border-blue-200 p-2 text-center">۲</td>
+                            <td class="border border-blue-200 p-2">فیلمنامه نویسی تخصصی</td>
+                            <td class="border border-blue-200 p-2">تئوری</td>
+                            <td class="border border-blue-200 p-2">۴</td>
+                            <td class="border border-blue-200 p-2">اعلام شده</td>
+                            <td class="border border-blue-200 p-2">سارا کمالی</td>
+                            <td class="border border-blue-200 p-2">۱۶</td>
+                            <td class="border border-blue-200 p-2"><span class="text-black">اعتراض</span></td>
+                            <td class="border border-blue-200 p-2">قبول</td>
+                            <td class="border border-blue-200 p-2">عادی</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="border border-blue-200 p-2 text-center">۳</td>
+                            <td class="border border-blue-200 p-2">زبان عمومی</td>
+                            <td class="border border-blue-200 p-2">تئوری</td>
+                            <td class="border border-blue-200 p-2">۳</td>
+                            <td class="border border-blue-200 p-2">اعلام شده</td>
+                            <td class="border border-blue-200 p-2">دکتر نیکو</td>
+                            <td class="border border-blue-200 p-2">۱۷</td>
+                            <td class="border border-blue-200 p-2"><span class="text-black">اعتراض</span></td>
+                            <td class="border border-blue-200 p-2">قبول</td>
+                            <td class="border border-blue-200 p-2">عادی</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="border border-blue-200 p-2 text-center">۴</td>
+                            <td class="border border-blue-200 p-2">فضاسازی رایانه‌ای</td>
+                            <td class="border border-blue-200 p-2">عملی</td>
+                            <td class="border border-blue-200 p-2">۳</td>
+                            <td class="border border-blue-200 p-2">اعلام شده</td>
+                            <td class="border border-blue-200 p-2">دکتر سهرابی</td>
+                            <td class="border border-blue-200 p-2">۱۵</td>
+                            <td class="border border-blue-200 p-2"><span class="text-black">اعتراض</span></td>
+                            <td class="border border-blue-200 p-2">قبول</td>
+                            <td class="border border-blue-200 p-2">عادی</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="complaintModal" class="fixed inset-0 flex items-center justify-center hidden bg-gray-800 bg-opacity-75">
+        <div class="bg-white rounded-lg p-5 modal">
+            <h2 class="text-lg font-bold mb-4">پیام‌های اعتراض دانشجو</h2>
+            <div id="complaintMessage" class="mb-4"></div>
+            <textarea id="responseText" class="border w-full p-2" placeholder="پیام اعتراض خود را اینجا بنویسید"></textarea>
+            <div class="mt-2">
+                <button onclick="sendResponse()" class="bg-green-500 text-white px-4 py-2 rounded">ارسال پاسخ</button>
+                <button onclick="deleteResponse()" class="bg-red-500 text-white px-4 py-2 rounded">حذف</button>
+            </div>
+            <button onclick="closeComplaintModal()" class="mt-5 bg-red-500 text-white px-4 py-2 rounded">بستن</button>
+        </div>
+    </div>
+
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Tehran', locale: 'fa-IR' };
+            document.getElementById('datetime').innerText = now.toLocaleString('fa-IR', options);
+        }
+
+        setInterval(updateDateTime, 1000); // به روز رسانی هر ثانیه
+
+        function openComplaintModal(message) {
+            document.getElementById("complaintMessage").innerText = message;
+            document.getElementById("complaintModal").classList.remove("hidden");
+        }
+
+        function closeComplaintModal() {
+            document.getElementById("complaintModal").classList.add("hidden");
+            document.getElementById("responseText").value = '';
+        }
+
+        function sendResponse() {
+            const responseText = document.getElementById("responseText").value;
+            if (responseText) {
+                alert("پاسخ به استاد ارسال شد.");
+                closeComplaintModal();
+            } else {
+                alert("لطفا پاسخ را وارد کنید.");
+            }
+        }
+
+        function deleteResponse() {
+            document.getElementById("responseText").value = '';
+            alert("پاسخ حذف شد.");
+        }
+
+        updateDateTime(); // اجرای اولیه برای نمایش تاریخ و ساعت
+    </script>
+</body>
+</html>

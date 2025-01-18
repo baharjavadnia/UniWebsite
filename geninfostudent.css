@@ -1,0 +1,42 @@
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+#datetime {
+    font-size: 16px; 
+}
+
+.dark-mode {
+    background-color: #1a202c;
+    color: white;
+}
+
+.grid {
+    font-size: 14px;
+}
+
+.highlight {
+    background-color: #3b82f6; /* رنگ آبی سرصفحه */
+}
+
+.odd-row {
+    background-color: #e0f2fe; /* رنگ پس‌زمینه ردیف‌های فرد */
+}
+
+.table-link:hover {
+    color: #3182ce; /* رنگ لینک‌ها در حالت هاور */
+}
+
+.text-center {
+    text-align: center;
+}
+
+.term-cell {
+    cursor: pointer; /* تغییر نشانگر به pointer هنگام هاور */
+}
+
+.term-cell:hover {
+    background-color: #5089cf; /* رنگ پس‌زمینه تیره‌تر آبی هنگام هاور */
+    color: white; /* تغییر رنگ متن در حالت هاور */
+}
