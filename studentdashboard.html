@@ -14,7 +14,7 @@
             <div class="flex space-x-4"> 
                 <a href="#" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
                 <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار</a> 
-                <a href="#" class="hover:text-gray-300 pr-10">اطلاعیه ها</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">اطلاعاتی‌ها</a> 
                 <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش</a> 
                 <a href="#" class="hover:text-gray-300 pr-10">سیستم پشتیبانی</a> 
                 <a href="#" class="hover:text-gray-300 pr-10">تماس با ما</a> 
@@ -29,65 +29,215 @@
             <div class="text-right">
                 <span class="font-semibold mr-20">نام:</span><span class="mr-2 ml-10">سمانه</span>
                 <span class="font-semibold mr-10">نام خانوادگی:</span><span class="mr-2 ml-10">حسینی</span>
-                <span class="font-semibold mr-10">ترم:</span><span class="mr-2 ml-10">۵</span>
+                <span class="font-semibold mr-10">ترم:</span><span class="mr-2 ml-10">۴</span>
                 <span class="font-semibold mr-10">رشته:</span><span class="mr-2 ml-10">انیمیشن</span>
             </div>
-        </div>        
-        
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             <a href="geninfostudent.html" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
                 <h2 class="text-xl font-semibold"><i class="fas fa-user"></i> اطلاعات شخصی دانشجو</h2>
             </a>
-            <a href="academic-info.html" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
+            <a id="openAcademicModal" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
                 <h2 class="text-xl font-semibold"><i class="fas fa-graduation-cap"></i> اطلاعات تحصیلی</h2>
             </a>
-            <a href="services.html" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
+            <a id="openServiceModal" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
                 <h2 class="text-xl font-semibold"><i class="fas fa-tasks"></i> پیشخوان خدمت</h2>
             </a>
-            <a href="education.html" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
+            <a id="openEducationModal" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
                 <h2 class="text-xl font-semibold"><i class="fas fa-book"></i> آموزش</h2>
             </a>
-            <a href="food-automation.html" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
-                <h2 class="text-xl font-semibold"><i class="fas fa-utensils"></i> اتوماسیون غذا</h2>
-            </a>
-            <a href="dormitory.html" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
+            <a id="openDormitoryModal" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
                 <h2 class="text-xl font-semibold"><i class="fas fa-bed"></i> خوابگاه</h2>
             </a>
+            <a href="foodreserve.html" class="card h-40 flex items-center justify-center text-center cursor-pointer hover:bg-blue-300 transition">
+                <h2 class="text-xl font-semibold"><i class="fas fa-utensils"></i> اتوماسیون غذا</h2>
+            </a>
         </div>
-        <div class="flex items-center mb-4 justify-center mt-10">
-            <span class="text-sm font-semibold mr-4">انتخاب سریع:</span>
-            <div class="flex items-center mr-4">
-                <input type="checkbox" class="mr-2" id="processCheckbox">
-                <label for="processCheckbox" class="text-sm mr-2">پردازش</label>
-            </div>
-            <div class="flex items-center mr-4">
-                <input type="checkbox" class="mr-2" id="reportCheckbox">
-                <label for="reportCheckbox" class="text-sm mr-2">گزارش</label>
-            </div>
-            <div class="flex items-center">
-                <label for="numberInput" class="text-sm font-semibold mr-12">ورود شماره:</label>
-                <input type="text" id="numberInput" placeholder="شماره..." class="border border-gray-300 p-1 rounded-lg w-1/4 mr-2" />
-                <button id="checkButton" class="bg-blue-500 text-white px-3 py-1 rounded-lg hover:bg-blue-600 mr-2">
-                    <i class="fas fa-check text-sm"></i> بررسی
+
+        <!-- Modal for academic information -->
+        <div id="academicModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex justify-center items-center">
+            <div class="bg-white rounded-lg shadow-lg p-6 relative w-11/12 md:w-1/3 lg:w-1/4">
+                <button id="closeAcademicModal" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">
+                    <i class="fas fa-times"></i>
                 </button>
-            </div>            
-        </div>        
+                <h2 class="text-xl font-bold mb-4">اطلاعات تحصیلی</h2>
+                <ul class="space-y-2">
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">وضعیت تحصیلی فعلی (معدل، رشته، مقطع)</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">تاریخ‌های مهم تحصیلی (شروع و پایان ترم‌ها)</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">مدارک تحصیلی و گواهینامه‌ها</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">گزارش کارنامه تحصیلی و نمرات دروس</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">وضعیت حضور و غیاب</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">اطلاعات استادان دروس و مشاور</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">اطلاعات مربوط به پروژه‌ها و تحقیق‌ها</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">آخرین تغییرات برنامه درسی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">رزومه تحصیلی</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Modal for service information -->
+        <div id="serviceModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex justify-center items-center">
+            <div class="bg-white rounded-lg shadow-lg p-6 relative w-11/12 md:w-1/3 lg:w-1/4 h-3/4 overflow-y-auto">
+                <button id="closeServiceModal" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 class="text-xl font-bold mb-4">پیشخوان خدمت</h2>
+                <ul class="space-y-2">
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">درخواست‌های غیرحضوری</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">خدمات مربوط به وام‌های دانشجویی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">درخواست تسهیلات مالی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">خدمات بیمه دانشجویی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">ثبت‌نام و پیگیری خدمات مشاوره‌ای</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">پیگیری درخواست‌های اداری</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">راهنمایی برای استفاده از تجهیزات دانشگاه</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">گزارش مشکلات فنی در سامانه‌ها</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">درخواست کمک‌های اضطراری</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">وضعیت و تاریخ درخواست‌های ثبت شده</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Modal for education -->
+        <div id="educationModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex justify-center items-center">
+            <div class="bg-white rounded-lg shadow-lg p-6 relative w-11/12 md:w-1/3 lg:w-1/4">
+                <button id="closeEducationModal" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 class="text-xl font-bold mb-4">مدیریت برنامه تحصیلی</h2>
+                <ul class="space-y-2">
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">ثبت نام در دروس</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">مشاهده تاریخ برگزاری امتحانات</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">مشاهده و ویرایش انتخاب واحد</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">مشاهده جزوات درسی و منابع</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">دسترسی به ویدیوهای آموزشی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">برنامه‌ریزی ترم‌های تحصیلی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">ویرایش اطلاعات تحصیلی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">درخواست تغییر رشته یا انتقالی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">بازبینی و ویرایش نمرات</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">گزارش عملکرد تحصیلی</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Modal for dormitory -->
+        <div id="dormitoryModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden flex justify-center items-center">
+            <div class="bg-white rounded-lg shadow-lg p-6 relative w-11/12 md:w-1/3 lg:w-1/4">
+                <button id="closeDormitoryModal" class="absolute top-2 right-2 text-gray-500 hover:text-red-500">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 class="text-xl font-bold mb-4">اطلاعات خوابگاه</h2>
+                <ul class="space-y-2">
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">اطلاعات محل اقامت</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">وضعیت اتاق‌های خوابگاه</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">درخواست انتقال به اتاق دیگر</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">پیگیری وضعیت درخواست‌های خوابگاهی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">خدمات نظافت خوابگاه</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">درخواست تسهیلات خوابگاهی</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">تاریخ‌های شروع و پایان اقامت</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">وضعیت اجاره خوابگاه و پرداخت‌ها</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">امکانات خوابگاه (اینترنت، سرویس بهداشتی، آشپزخانه)</li>
+                    <li class="item hover:bg-blue-300 cursor-pointer py-2 px-4 rounded">راهنمای خوابگاه و مقررات آن</li>
+                </ul>
+            </div>
+        </div>
     </main>
 
-        <!-- JavaScript to display current date and time -->
-        <script>
-            function updateDateTime() {
-                const now = new Date();
-                const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Tehran' };
-                const formattedDateTime = now.toLocaleString('fa-IR', options);
-                document.getElementById('datetime').innerText = formattedDateTime;
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        const academicModal = document.getElementById('academicModal');
+        const serviceModal = document.getElementById('serviceModal');
+        const educationModal = document.getElementById('educationModal');
+        const dormitoryModal = document.getElementById('dormitoryModal');
+        
+        const openAcademicModalButton = document.getElementById('openAcademicModal');
+        const openServiceModalButton = document.getElementById('openServiceModal');
+        const openEducationModalButton = document.getElementById('openEducationModal');
+        const openDormitoryModalButton = document.getElementById('openDormitoryModal');
+
+        const closeAcademicModalButton = document.getElementById('closeAcademicModal');
+        const closeServiceModalButton = document.getElementById('closeServiceModal');
+        const closeEducationModalButton = document.getElementById('closeEducationModal');
+        const closeDormitoryModalButton = document.getElementById('closeDormitoryModal');
+
+        // Initially hide the modals
+        academicModal.classList.add('hidden');
+        serviceModal.classList.add('hidden');
+        educationModal.classList.add('hidden');
+        dormitoryModal.classList.add('hidden');
+
+        // Show the academic modal when the academic info card is clicked
+        openAcademicModalButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            academicModal.classList.remove('hidden');
+        });
+
+        // Show the service modal when the service card is clicked
+        openServiceModalButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            serviceModal.classList.remove('hidden');
+        });
+
+        // Show the education modal when the education card is clicked
+        openEducationModalButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            educationModal.classList.remove('hidden');
+        });
+
+        // Show the dormitory modal when the dormitory card is clicked
+        openDormitoryModalButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            dormitoryModal.classList.remove('hidden');
+        });
+
+        // Hide the academic modal when the close button is clicked
+        closeAcademicModalButton.addEventListener('click', function() {
+            academicModal.classList.add('hidden');
+        });
+
+        // Hide the service modal when the close button is clicked
+        closeServiceModalButton.addEventListener('click', function() {
+            serviceModal.classList.add('hidden');
+        });
+
+        // Hide the education modal when the close button is clicked
+        closeEducationModalButton.addEventListener('click', function() {
+            educationModal.classList.add('hidden');
+        });
+
+        // Hide the dormitory modal when the close button is clicked
+        closeDormitoryModalButton.addEventListener('click', function() {
+            dormitoryModal.classList.add('hidden');
+        });
+
+        // Hide the modals when clicking outside of them
+        window.addEventListener('click', function(event) {
+            if (event.target === academicModal) {
+                academicModal.classList.add('hidden');
             }
+            if (event.target === serviceModal) {
+                serviceModal.classList.add('hidden');
+            }
+            if (event.target === educationModal) {
+                educationModal.classList.add('hidden');
+            }
+            if (event.target === dormitoryModal) {
+                dormitoryModal.classList.add('hidden');
+            }
+        });
 
-            // Update date and time every second
-            setInterval(updateDateTime, 1000);
-            // Initial call to display date and time immediately
-            updateDateTime();
-        </script>
-    </main>
+        // Update date and time function
+        function updateDateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'Asia/Tehran' };
+            const formattedDateTime = now.toLocaleString('fa-IR', options);
+            document.getElementById('datetime').innerText = formattedDateTime;
+        }
+
+        // Update date and time every second
+        setInterval(updateDateTime, 1000);
+        // Initial call to display date and time immediately
+        updateDateTime();
+    </script>
 </body>
 </html>

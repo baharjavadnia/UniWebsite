@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزرو غذا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .reservation-card {
+            min-height: 600px; /* تنظیم ارتفاع حداقلی برای کارت */
+        }
+    </style>
+    <script>
+        const breakfastOptions = [
+            "نان + کره + مربا + چای",
+            "پنیر + سبزی + نان لواش",
+            "کره + عسل + نان شیرمال + چای",
+            "املت سبزیجات + نان سنگک",
+            "نان + پنیر + گردو",
+            "خاگینه + چای",
+            "فرنی",
+            "سوسیس تخم مرغ + نان + آب پرتقال",
+            "نان تست + پنیر + گوجه فرنگی",
+            "حلوا ارده + نان",
+            "شیر + خرما + نان شیرمال",
+            "پنیر فتا + کره + نان",
+            "عدسی + نان لواش",
+            "کاچی + نان",
+            "شیره خرما + ارده + نان"
+        ];
+
+        const lunchOptions = [
+            "خورش قیمه سیب‌زمینی",
+            "خورش فسنجان",
+            "خورش سبزی",
+            "چلو کباب کوبیده",
+            "ماکارونی",
+            "چلو جوجه کباب",
+            "خوراک مرغ و قارچ",
+            "خورش بادمجان",
+            "قرمه سبزی",
+            "عدس‌پلو با گوشت",
+            "دیزی + نان",
+            "خورش قیمه نثار",
+            "لوبیا پلو با گوشت",
+            "هویج پلو با مرغ",
+            "برنج زعفرانی با مرغ"
+        ];
+
+        const dinnerOptions = [
+            "خوراک مرغ و قارچ",
+            "کوکو سبزی",
+            "ته‌چین مرغ",
+            "املت سیب‌زمینی",
+            "کوکو سیب‌زمینی",
+            "اشکنه",
+            "چلو خورش مرغ",
+            "آش رشته",
+            "بلال کبابی + قارچ کبابی + نان",
+            "فلافل",
+            "قلیه ماهی + سالاد شیرازی",
+            "قرمه سبزی",
+            "پلو با ماهیچه",
+            "سمبوسه",
+            "سالاد تن ماهی"
+        ];
+
+        function toggleOptions() {
+            const select = document.getElementById("studentOrDormitory");
+            const dormitoryOptions = document.getElementById("dormitoryOptions");
+            const facultyOptions = document.getElementById("facultyOptions");
+            if (select.value === "dormitory") {
+                dormitoryOptions.classList.remove("hidden");
+                facultyOptions.classList.add("hidden");
+            } else {
+                dormitoryOptions.classList.add("hidden");
+                facultyOptions.classList.remove("hidden");
+            }
+        }
+
+        function getRandomOptions(options, count) {
+            const shuffled = options.sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        function updateMealOptions(day) {
+            const mealTypeSelect = day.querySelector('select:first-child');
+            const foodSelect = day.querySelector('select:last-child');
+
+            // Clear previous options
+            foodSelect.innerHTML = "";
+
+            let options = [];
+            if (mealTypeSelect.value === "breakfast") {
+                options = getRandomOptions(breakfastOptions, 3);
+            } else if (mealTypeSelect.value === "lunch") {
+                options = getRandomOptions(lunchOptions, 3);
+            } else if (mealTypeSelect.value === "dinner") {
+                options = getRandomOptions(dinnerOptions, 3);
+            }
+
+            // Populate food options
+            foodSelect.innerHTML = `<option value="" disabled selected>نوع غذا</option>` +
+                options.map(option => `<option value="${option}">${option}</option>`).join('');
+        }
+
+        function submitReservation() {
+            let reservationMade = false;
+            const days = document.querySelectorAll('.grid .text-center');
+            days.forEach(day => {
+                const daySelects = day.querySelectorAll('select');
+                if (daySelects[0].value && daySelects[1].value) {
+                    reservationMade = true;
+                }
+            });
+
+            if (reservationMade) {
+                Swal.fire({
+                    title: 'رزرو با موفقیت ثبت شد!',
+                    icon: 'success',
+                    confirmButtonText: 'باشه'
+                });
+            } else {
+                Swal.fire({
+                    title: 'لطفا رزرو خود را انجام دهید',
+                    icon: 'warning',
+                    confirmButtonText: 'باشه'
+                });
+            }
+        }
+
+        window.onload = function() {
+            const currentDate = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
+            document.getElementById("currentDate").textContent = currentDate.toLocaleDateString('fa-IR', options);
+        };
+    </script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <nav class="flex space-x-5">
+                <a href="#" class="hover:text-gray-300 mr-10 ml-5">خانه</a>
+                <a href="#" class="hover:text-gray-300">رزرو</a>
+                <a href="#" class="hover:text-gray-300">انتقال رزرو</a>
+                <a href="#" class="hover:text-gray-300">تراکنش‌ها</a>
+                <a href="#" class="hover:text-gray-300">انتقال اعتبار</a>
+                <a href="#" class="hover:text-gray-300">افزایش اعتبار</a>
+                <a href="#" class="hover:text-gray-300">گروه دوستان</a>
+                <a href="#" class="hover:text-gray-300">انتقال رزرو به گروه دوستان</a>
+                <a href="#" class="hover:text-gray-300">خروج</a>
+            </nav>
+            <div class="flex items-center space-x-8">
+                <span class="text-white ml-5">اعتبار: ۲۴,۰۰۰ تومان</span>
+                <span class="text-white">تاریخ: <span id="currentDate"></span></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-10 px-4">
+        <div class="bg-white shadow-md rounded reservation-card px-8 pt-6 pb-8 mb-4">
+            <div class="flex justify-between mb-4">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">شماره دانشجویی</label>
+                    <p class="text-gray-600">۴۰۱۱۰۶۷۰۰۶</p>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2">نام و نام خانوادگی</label>
+                    <p class="text-gray-600">سمانه حسینی</p>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="studentOrDormitory">انتخاب</label>
+                <select id="studentOrDormitory" onchange="toggleOptions()" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="student">دانشجو</option>
+                    <option value="dormitory">خوابگاه</option>
+                </select>
+            </div>
+            <div id="facultyOptions" class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">گزینه‌ها</label>
+                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="" disabled selected>لطفاً انتخاب کنید</option>
+                    <option value="math">دانشکده ریاضی</option>
+                    <option value="art">دانشکده هنر و معماری</option>
+                    <option value="science">دانشکده علوم پایه</option>
+                    <option value="literature">دانشکده ادبیات</option>
+                    <option value="management">دانشکده مدیریت</option>
+                </select>
+            </div>
+            <div id="dormitoryOptions" class="mb-4 hidden">
+                <label class="block text-gray-700 text-sm font-bold mb-2">گزینه‌ها</label>
+                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="" disabled selected>لطفاً انتخاب کنید</option>
+                    <option value="narges">خوابگاه نرگس</option>
+                    <option value="sahand">خوابگاه سهند</option>
+                    <option value="maryam">خوابگاه مریم</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">انتخاب روزهای هفته</label>
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-4">
+                    <!-- شنبه -->
+                    <div class="text-center">
+                        <label class="text-gray-700">شنبه</label>
+                        <div>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="updateMealOptions(this.parentElement.parentElement)">
+                                <option value="" disabled selected>نوع وعده</option>
+                                <option value="breakfast">صبحانه</option>
+                                <option value="lunch">ناهار</option>
+                                <option value="dinner">شام</option>
+                            </select>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" disabled selected>نوع غذا</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- یکشنبه -->
+                    <div class="text-center">
+                        <label class="text-gray-700">یکشنبه</label>
+                        <div>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="updateMealOptions(this.parentElement.parentElement)">
+                                <option value="" disabled selected>نوع وعده</option>
+                                <option value="breakfast">صبحانه</option>
+                                <option value="lunch">ناهار</option>
+                                <option value="dinner">شام</option>
+                            </select>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" disabled selected>نوع غذا</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- دوشنبه -->
+                    <div class="text-center">
+                        <label class="text-gray-700">دوشنبه</label>
+                        <div>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="updateMealOptions(this.parentElement.parentElement)">
+                                <option value="" disabled selected>نوع وعده</option>
+                                <option value="breakfast">صبحانه</option>
+                                <option value="lunch">ناهار</option>
+                                <option value="dinner">شام</option>
+                            </select>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" disabled selected>نوع غذا</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- سه‌شنبه -->
+                    <div class="text-center">
+                        <label class="text-gray-700">سه‌شنبه</label>
+                        <div>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="updateMealOptions(this.parentElement.parentElement)">
+                                <option value="" disabled selected>نوع وعده</option>
+                                <option value="breakfast">صبحانه</option>
+                                <option value="lunch">ناهار</option>
+                                <option value="dinner">شام</option>
+                            </select>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" disabled selected>نوع غذا</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- چهارشنبه -->
+                    <div class="text-center">
+                        <label class="text-gray-700">چهارشنبه</label>
+                        <div>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="updateMealOptions(this.parentElement.parentElement)">
+                                <option value="" disabled selected>نوع وعده</option>
+                                <option value="breakfast">صبحانه</option>
+                                <option value="lunch">ناهار</option>
+                                <option value="dinner">شام</option>
+                            </select>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" disabled selected>نوع غذا</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- پنجشنبه -->
+                    <div class="text-center">
+                        <label class="text-gray-700">پنجشنبه</label>
+                        <div>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="updateMealOptions(this.parentElement.parentElement)">
+                                <option value="" disabled selected>نوع وعده</option>
+                                <option value="breakfast">صبحانه</option>
+                                <option value="lunch">ناهار</option>
+                                <option value="dinner">شام</option>
+                            </select>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" disabled selected>نوع غذا</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- جمعه -->
+                    <div class="text-center">
+                        <label class="text-gray-700">جمعه</label>
+                        <div>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" onchange="updateMealOptions(this.parentElement.parentElement)">
+                                <option value="" disabled selected>نوع وعده</option>
+                                <option value="breakfast">صبحانه</option>
+                                <option value="lunch">ناهار</option>
+                                <option value="dinner">شام</option>
+                            </select>
+                            <select class="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                <option value="" disabled selected>نوع غذا</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-6">
+                <button onclick="submitReservation()" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+                    ثبت رزرو
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-blue-800 text-white py-2 mt-0">
+        <div class="container mx-auto text-center">
+            <p>کپی رایت © 2023 - همه حقوق محفوظ است</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current date
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("currentDate").textContent = new Date().toLocaleDateString('fa-IR', options);
+    </script>
+</body>
+</html>
