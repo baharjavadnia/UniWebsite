@@ -1,0 +1,43 @@
+/* styles.css */
+
+/* General styles */
+body {
+    font-family: 'X Yekan', sans-serif; /* Set the font to Yekan */
+   
+     transition: background-color 0.5s, color 0.5s;
+    }
+    
+    .dark-mode {
+        background-color: #1a202c; /* Dark background */
+        color: #f7fafc; /* Light text */
+    }
+    .light-mode {
+        background-color: #f7fafc; /* Light background */
+        color: #1a202c; /* Dark text */
+    }
+
+nav a {
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: rgba(0, 255, 0, 0.8); /* Change color on hover */
+}
+
+.toggle {
+    width: 40px;
+    height: 20px;
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}

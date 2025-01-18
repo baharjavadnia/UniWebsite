@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet"> <!-- Importing Vazirmatn font -->
+    
+    <title>اطلاعات جامع استاد</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            /* Applying Vazir font to the body */
+            transition: background-color 0.5s, color 0.5s;
+        }
+        .dark-mode {
+            background-color: #1a202c;
+            color: white;
+        }
+        .highlight {
+            background-color: #ebf8ff;
+        }
+        .odd-row {
+            background-color: #f1f5f9;
+        }
+        .table-link:hover {
+            color: #3182ce;
+            background-color: #ebf8ff;
+            nav a {
+  font-size: 14px;
+  
+}
+
+#datetime {
+    font-size: 14px; 
+}
+        }
+    </style>
+</head>
+<body class="bg-blue-50">
+    <header class="flex justify-between items-center p-4 bg-blue-800 text-white"> 
+        <nav class="flex space-x-4 ml-auto"> 
+            <div class="flex space-x-4"> 
+                <a href="#" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
+                <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">اطلاعیه ها</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سیستم پشتیبانی</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">تماس با ما</a> 
+            </div> 
+        </nav> 
+        <div id="datetime" class="text-left ml-10"></div> 
+    </header>
+
+
+
+
+
+    <main class="flex justify-center p-6">
+        <section class="w-full max-w-5xl mx-auto">
+            <h2 class="text-xl font-bold mb-4">اطلاعات جامع استاد</h2>
+            <div class="bg-white shadow-md rounded-lg p-6"> 
+                <div class="flex items-start"> 
+                    <img style="width: 100px;" src="https://basu.ac.ir/faculty?p_p_id=ir_sain_university_people_portlet_FacultyProfilePortlet&p_p_lifecycle=2&p_p_state=normal&p_p_mode=view&p_p_resource_id=%2Funiversity_people%2Fperson_image&p_p_cacheability=cacheLevelPage&_ir_sain_university_people_portlet_FacultyProfilePortlet_universityPersonImageId=1032603&_ir_sain_university_people_portlet_FacultyProfilePortlet__ir_sain_university_people_FacultyHomePortlet_friendlyURLRequest=anbarian&_ir_sain_university_people_portlet_FacultyProfilePortlet_friendlyURLRequest=anbarian" alt="تصویر استاد" class="rounded-full ml-4"> 
+                    <div class="ml-4 w-full"> 
+                        <div class="grid grid-cols-3 gap-2 mb-4 text-right"> 
+                            <span>شماره پرسنلی: ۱۴۰۲۹۰۲۲۱۰</span> 
+                            <span>نام: احمد</span> 
+                            <span>نام خانوادگی: رضایی</span> 
+                            <span>نام پدر: حسین</span> 
+                            <span>تاریخ تولد: ۰۳/۰۷/۱۳۵۹</span> 
+                            <span>مدرک تحصیلی: دکتری</span> 
+                            <span>رشته تحصیلی: تصویرسازی</span> 
+                            <span>دانشکده: هنر و معماری</span> 
+                            <span>گروه آموزشی: انیمیشن</span> 
+                            <span>سمت: استادیار</span> 
+                            <span>وضعیت استخدام: پیمانی</span> 
+                            <span>آخرین وضعیت: فعال</span> 
+                        </div>
+                    </div> 
+                </div> 
+            </div>
+            
+
+           
+                <title>جدول تدریس و ارزیابی</title>
+                <style>
+                    body {
+                        font-family: 'Vazirmatn', sans-serif;
+                    }
+                    .highlight:hover {
+                        background-color: #e5e7eb; /* Gray background on hover */
+                    }
+                    .table-link:hover {
+                        background-color: #cbd5e1; /* Light gray background */
+                        color: #1d4ed8; /* Dark blue text */
+                    }
+                    .status-link:hover {
+                        background-color: #fca5a1; /* Light red background */
+                        color: #b91c1c; /* Dark red text */
+                    }
+                </style>
+           
+            <body class="bg-gray-100 p-8">
+                <section class="mt-8">
+                    <h2 class="text-xl font-bold">جدول تدریس و ارزیابی</h2>
+                    <div class="bg-white shadow-md rounded-lg p-4 mt-4 overflow-auto">
+                        <table class="min-w-full border-collapse border border-gray-200">
+                            <thead>
+                                <tr class="highlight">
+                                    <th class="border border-gray-200 p-2">ردیف</th>
+                                    <th class="border border-gray-200 p-2">ترم</th>
+                                    <th class="border border-gray-200 p-2">وضع ترم</th>
+                                    <th class="border border-gray-200 p-2">تعداد درس</th>
+                                    <th class="border border-gray-200 p-2">تعداد واحد ترم</th>
+                                    <th class="border border-gray-200 p-2">تعداد دانشجو</th>
+                                    <th class="border border-gray-200 p-2">تعداد حذف</th>
+                                    <th class="border border-gray-200 p-2">تعداد ردی</th>
+                                    <th class="border border-gray-200 p-2">دانشجویان درس خاص</th>
+                                    <th class="border border-gray-200 p-2">پروژه های رساله</th>
+                                    <th class="border border-gray-200 p-2">استاد راهنما</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd-row">
+                                    <td class="border border-gray-200 p-2">1</td>
+                                    <td class="border border-gray-200 p-2">ترم 1</td>
+                                    <td class="border border-gray-200 p-2 status-link">
+                                        <a href="#" class="text-red-500">مشغول به کار</a>
+                                    </td>
+                                    <td class="border border-gray-200 p-2">5</td>
+                                    <td class="border border-gray-200 p-2">15 (10/5)</td>
+                                    <td class="border border-gray-200 p-2">30</td>
+                                    <td class="border border-gray-200 p-2">2</td>
+                                    <td class="border border-gray-200 p-2">1</td>
+                                    <td class="border border-gray-200 p-2">10</td>
+                                    <td class="border border-gray-200 p-2">5</td>
+                                    <td class="border border-gray-200 p-2">دکتر محمدی</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 p-2">2</td>
+                                    <td class="border border-gray-200 p-2">ترم 2</td>
+                                    <td class="border border-gray-200 p-2 status-link">
+                                        <a href="#" class="text-red-500">مشغول به کار</a>
+                                    </td>
+                                    <td class="border border-gray-200 p-2">6</td>
+                                    <td class="border border-gray-200 p-2">18 (12/6)</td>
+                                    <td class="border border-gray-200 p-2">25</td>
+                                    <td class="border border-gray-200 p-2">3</td>
+                                    <td class="border border-gray-200 p-2">2</td>
+                                    <td class="border border-gray-200 p-2">15</td>
+                                    <td class="border border-gray-200 p-2">7</td>
+                                    <td class="border border-gray-200 p-2">دکتر رضایی</td>
+                                </tr>
+                                <tr class="odd-row">
+                                    <td class="border border-gray-200 p-2">3</td>
+                                    <td class="border border-gray-200 p-2">ترم 3</td>
+                                    <td class="border border-gray-200 p-2 status-link">
+                                        <a href="#" class="text-red-500">مشغول به کار</a>
+                                    </td>
+                                    <td class="border border-gray-200 p-2">4</td>
+                                    <td class="border border-gray-200 p-2">12 (8/4)</td>
+                                    <td class="border border-gray-200 p-2">20</td>
+                                    <td class="border border-gray-200 p-2">1</td>
+                                    <td class="border border-gray-200 p-2">0</td>
+                                    <td class="border border-gray-200 p-2">12</td>
+                                    <td class="border border-gray-200 p-2">6</td>
+                                    <td class="border border-gray-200 p-2">دکتر کریمی</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-gray-200 p-2">4</td>
+                                    <td class="border border-gray-200 p-2">ترم 4</td>
+                                    <td class="border border-gray-200 p-2 status-link">
+                                        <a href="#" class="text-red-500">مشغول به کار</a>
+                                    </td>
+                                    <td class="border border-gray-200 p-2">5</td>
+                                    <td class="border border-gray-200 p-2">15 (10/5)</td>
+                                    <td class="border border-gray-200 p-2">22</td>
+                                    <td class="border border-gray-200 p-2">2</td>
+                                    <td class="border border-gray-200 p-2">1</td>
+                                    <td class="border border-gray-200 p-2">8</td>
+                                    <td class="border border-gray-200 p-2">4</td>
+                                    <td class="border border-gray-200 p-2">دکتر سلیمی</td>
+                                </tr>
+                                <tr class="odd-row">
+                                    <td class="border border-gray-200 p-2">5</td>
+                                    <td class="border border-gray-200 p-2">ترم 5</td>
+                                    <td class="border border-gray-200 p-2 status-link">
+                                        <a href="#" class="text-red-500">مشغول به کار</a>
+                                    </td>
+                                    <td class="border border-gray-200 p-2">3</td>
+                                    <td class="border border-gray-200 p-2">9 (6/3)</td>
+                                    <td class="border border-gray-200 p-2">18</td>
+                                    <td class="border border-gray-200 p-2">0</td>
+                                    <td class="border border-gray-200 p-2">0</td>
+                                    <td class="border border-gray-200 p-2">5</td>
+                                    <td class="border border-gray-200 p-2">3</td>
+                                    <td class="border border-gray-200 p-2">دکتر احمدی</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </body>
+            </html>
+
+            <section class="mt-8">
+                <h2 class="text-xl font-bold"> ارزیابی عملکرد و فعالیت‌ها</h2>
+                <div class="bg-white shadow-md rounded-lg p-4 mt-4">
+                    <p>نمره کلی ارزیابی دانشجویان (میانگین نمرات ارزیابی): <strong>17.5</strong></p>
+                    <p>نظرات دانشجویان (نظرسنجی‌ها): <strong>خوب است، اما نیاز به بهبود دارد.</strong></p>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div class="fixed bottom-4 right-4">
+        <button id="accessibility-btn" class="p-2 bg-blue-800 text-white rounded-full hover:bg-blue-600">
+            <i class="fas fa-universal-access"></i>
+        </button>
+        <div id="accessibility-menu" class="hidden bg-white shadow-md rounded-lg mt-2 p-2">
+            <button onclick="toggleDarkMode()" class="p-2">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button onclick="toggleLightMode()" class="p-2">
+                <i class="fas fa-sun"></i>
+            </button>
+            <button onclick="zoomIn()" class="p-2">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button onclick="zoomOut()" class="p-2">
+                <i class="fas fa-minus"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        function toggleDarkMode() {
+            document.getElementById('body').classList.add('dark-mode');
+        }
+
+        function toggleLightMode() {
+            document.getElementById('body').classList.remove('dark-mode');
+        }
+
+        function zoomIn() {
+            document.body.style.zoom = "110%";
+        }
+
+        function zoomOut() {
+            document.body.style.zoom = "90%";
+        }
+
+        document.getElementById('accessibility-btn').addEventListener('click', function() {
+            const menu = document.getElementById('accessibility-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        function updateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+            document.getElementById('datetime').innerText = now.toLocaleString('fa-IR', options);
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+  
+    </script>
+</body>
+</html>
