@@ -24,10 +24,10 @@
             background-color: #ebf8ff;
         }
         .odd-row {
-            background-color: #f1f5f9;
+            background-color: #f0f4ff;
         }
         .table-link:hover {
-            color: #3182ce;
+            color: #1e40b0;
         }
         .text-center {
             text-align: center;
@@ -36,19 +36,19 @@
             cursor: pointer; /* تغییر نشانگر به pointer هنگام هاور */
         }
         .term-cell:hover {
-            background-color: #5089cf; /* پس‌زمینه تیره‌تر آبی هنگام هاور */
+            background-color: #1e40b0; /* پس‌زمینه تیره‌تر آبی هنگام هاور */
             color: white; /* تغییر رنگ متن در حالت هاور */
         }
         /* استایل جدول */
         .table-header {
-            background-color: #3b82f6; /* رنگ آبی */
+            background-color: #1e40b0; /* رنگ آبی */
             color: white;
         }
         .table-row {
-            background-color: #f0f9ff; /* رنگ پس‌زمینه ردیف‌ها */
+            background-color: #f0f4ff; /* رنگ پس‌زمینه ردیف‌ها */
         }
         .table-row:nth-child(even) {
-            background-color: #e0f2fe; /* رنگ پس‌زمینه ردیف‌های زوج */
+            background-color: white; /* رنگ پس‌زمینه ردیف‌های زوج */
         }
     </style>
     <title>اطلاعات جامع دانشجو</title>
@@ -73,7 +73,7 @@
             <h2 class="text-xl font-bold mb-4">اطلاعات ترمی دانشجو</h2>
             <div class="bg-white shadow-md rounded-lg p-6">
                 <div class="flex items-start">
-                    <div class="mr-8 mt-3" style="width: 90px; height: 80px; background-color: #bfc7eb; border-radius: 100%;"></div>
+                    <img src="https://axrizanstudio.com/wp-content/uploads/2024/05/ID-Card-2-Custom.jpg" alt="Profile" class="rounded-full w-20 h-20 mr-8 mt-3 object-cover">
                     <div class="ml-1 w-full">
                         <div class="grid grid-cols-4 gap-1 mr-14 mt-4 mb-4 text-right">
                             <span>شماره دانشجویی: ۴۰۱۱۰۶۷۰۰۶</span>
@@ -90,7 +90,6 @@
                     </div>
                 </div>
             </div>
-
             <h2 class="text-xl font-bold mb-4 mt-9">جدول نمرات</h2>
             <div class="bg-white shadow-md rounded-lg p-4 mt-4 overflow-auto">
                 <table class="min-w-full border-collapse border border-blue-200">
@@ -199,18 +198,12 @@
         </section>
     </main>
 
-    <div id="complaintModal" class="fixed inset-0 flex items-center justify-center hidden bg-gray-800 bg-opacity-75">
-        <div class="bg-white rounded-lg p-5 modal">
-            <h2 class="text-lg font-bold mb-4">پیام‌های اعتراض دانشجو</h2>
-            <div id="complaintMessage" class="mb-4"></div>
-            <textarea id="responseText" class="border w-full p-2" placeholder="پیام اعتراض خود را اینجا بنویسید"></textarea>
-            <div class="mt-2">
-                <button onclick="sendResponse()" class="bg-green-500 text-white px-4 py-2 rounded">ارسال پاسخ</button>
-                <button onclick="deleteResponse()" class="bg-red-500 text-white px-4 py-2 rounded">حذف</button>
-            </div>
-            <button onclick="closeComplaintModal()" class="mt-5 bg-red-500 text-white px-4 py-2 rounded">بستن</button>
+    <footer class="bg-blue-800 text-white p-4 mt-auto">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm">© 2025 دانشکده هنر و معماری. تمامی حقوق محفوظ است.</p>
+            <p class="text-sm">طراحی و توسعه توسط تیم فنی دانشگاه خوارزمی</p>
         </div>
-    </div>
+    </footer>
 
     <script>
         function updateDateTime() {
