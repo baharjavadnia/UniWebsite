@@ -136,8 +136,11 @@
 
         window.onload = function() {
             const currentDate = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' };
-            document.getElementById("currentDate").textContent = currentDate.toLocaleDateString('fa-IR', options);
+            const day = currentDate.toLocaleDateString('fa-IR', { day: 'numeric' });
+            const month = currentDate.toLocaleDateString('fa-IR', { month: 'long' });
+            const year = currentDate.toLocaleDateString('fa-IR', { year: 'numeric' });
+            const weekday = currentDate.toLocaleDateString('fa-IR', { weekday: 'long' });
+            document.getElementById("currentDate").textContent = `${day} ${month} ${year}، ${weekday}`;
         };
     </script>
 </head>
@@ -175,14 +178,14 @@
                 </div>
             </div>
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="studentOrDormitory">انتخاب</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="studentOrDormitory">گروه افراد</label>
                 <select id="studentOrDormitory" onchange="toggleOptions()" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     <option value="student">دانشجو</option>
                     <option value="dormitory">خوابگاه</option>
                 </select>
             </div>
             <div id="facultyOptions" class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2">گزینه‌ها</label>
+                <label class="block text-gray-700 text-sm font-bold mb-2">رستوران</label>
                 <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     <option value="" disabled selected>لطفاً انتخاب کنید</option>
                     <option value="math">دانشکده ریاضی</option>
@@ -319,16 +322,23 @@
         </div>
     </main>
 
-    <footer class="bg-blue-800 text-white py-2 mt-0">
-        <div class="container mx-auto text-center">
-            <p>کپی رایت © 2023 - همه حقوق محفوظ است</p>
+    <footer class="bg-blue-800 text-white p-4 mt-auto">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm">© 2025 دانشکده هنر و معماری. تمامی حقوق محفوظ است.</p>
+            <p class="text-sm">طراحی و توسعه توسط تیم فنی دانشگاه خوارزمی</p>
         </div>
     </footer>
 
     <script>
-        // Set current date
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById("currentDate").textContent = new Date().toLocaleDateString('fa-IR', options);
+        // Set current date in desired format
+        window.onload = function() {
+            const currentDate = new Date();
+            const day = currentDate.toLocaleDateString('fa-IR', { day: 'numeric' });
+            const month = currentDate.toLocaleDateString('fa-IR', { month: 'long' });
+            const year = currentDate.toLocaleDateString('fa-IR', { year: 'numeric' });
+            const weekday = currentDate.toLocaleDateString('fa-IR', { weekday: 'long' });
+            document.getElementById("currentDate").textContent = `${day} ${month} ${year}، ${weekday}`;
+        };
     </script>
 </body>
 </html>
