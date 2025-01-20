@@ -6,53 +6,92 @@
     <title>سیستم ورود نمره</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <head>
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
+    
         .hover-effect:hover {
-            background-color: #f0f0f0;
+            background-color: #E5E7EB; /* رنگ مشابه صفحه قبلی */
         }
+    
         .modal {
             max-height: 80vh;
             overflow-y: auto;
         }
+    
         .grade-red {
             color: red;
         }
+    
         .hover-grade {
             cursor: pointer;
             transition: color 0.3s, transform 0.3s;
         }
         .hover-grade:hover {
-            color: #4A90E2; 
-            transform: scale(1.2); 
+            color: #2563EB; /* آبی مشابه صفحه قبلی */
+            transform: scale(1.2);
         }
+    
         .hover-message {
             cursor: pointer;
             transition: color 0.3s, transform 0.3s;
         }
         .hover-message:hover {
-            color: #FF6347; 
+            color: #EF4444; /* قرمز مشابه صفحه قبلی */
             transform: scale(1.5);
         }
+    
         nav a {
             font-size: 14px;
         }
+    
         #datetime {
-            font-size: 14px; 
+            font-size: 14px;
         }
+    
         .back-button {
+            background-color: #1e40b0; /* Matches the header color */
             color: white;
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            background-color: #1E3A8A; /* Tailwind's blue-800 */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
         }
         .back-button:hover {
-            background-color: #374151; /* Tailwind's gray-700 */
+            transform: scale(1.1);
+        }
+    
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+    
+        th, td {
+            border: 1px solid #D1D5DB;
+            padding: 8px;
+            text-align: right;
+        }
+    
+        th {
+            background-color: #1E3A8A;
+            color: white;
+        }
+    
+        footer {
+            margin-top: auto;
+            background-color: #1E3A8A;
+            color: white;
+            padding: 1rem;
+            text-align: center;
         }
     </style>
+    
 </head>
 <body class="bg-gray-100">
 
@@ -69,9 +108,10 @@
             </div> 
         </nav> 
     </header>
+    
 
-    <div class="container mx-auto mt-12 mb-8">
-        <a href="#" class="back-button mb-4">بازگشت</a>
+    <div class="container mx-auto mt-12 mb-8 flex-grow">
+        <a href="teacher info.html" class="back-button mb-4">بازگشت</a>
         
         <div class="bg-white shadow-lg rounded-lg p-5 mt-4">
             <h1 class="text-xl text-right font-bold mb-5">جدول تدریس</h1>
@@ -102,7 +142,7 @@
                         <td class="border px-4 py-2">10</td>
                         <td class="border px-4 py-2">15</td>
                         <td class="border px-4 py-2">25</td>
-                        <td class="border px-4 py-2">عملی</td> <!-- نوع درس: عملی -->
+                        <td class="border px-4 py-2">عملی</td>
                         <td class="border px-4 py-2">3</td>
                         <td class="border px-4 py-2">نیمسال 1</td>
                         <td class="border px-4 py-2">101</td>
@@ -117,7 +157,7 @@
                         <td class="border px-4 py-2">12</td>
                         <td class="border px-4 py-2">17</td>
                         <td class="border px-4 py-2">30</td>
-                        <td class="border px-4 py-2">عملی</td> <!-- نوع درس: عملی -->
+                        <td class="border px-4 py-2">عملی</td>
                         <td class="border px-4 py-2">3</td>
                         <td class="border px-4 py-2">نیمسال 1</td>
                         <td class="border px-4 py-2">102</td>
@@ -132,7 +172,7 @@
                         <td class="border px-4 py-2">9</td>
                         <td class="border px-4 py-2">-</td>
                         <td class="border px-4 py-2">20</td>
-                        <td class="border px-4 py-2">عملی/تئوری</td> <!-- نوع درس: عملی/تئوری -->
+                        <td class="border px-4 py-2">عملی/تئوری</td>
                         <td class="border px-4 py-2">3</td>
                         <td class="border px-4 py-2">نیمسال 1</td>
                         <td class="border px-4 py-2">103</td>
@@ -182,6 +222,13 @@
         </div>
     </div>
 
+    <footer class="bg-blue-800 text-white p-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p>© 2025 دانشکده هنر و معماری. تمامی حقوق محفوظ است.</p>
+            <p>طراحی و توسعه توسط تیم فنی دانشگاه دانشگه خوارزمی</p>
+        </div>
+    </footer>
+
     <script>
         // نمایش تاریخ و ساعت
         function updateDateTime() {
@@ -226,7 +273,7 @@
                 const studentNumber = `123${i}`;
                 const fullName = `${names[Math.floor(Math.random() * names.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
                 const score = (courseName !== 'مبانی رنگ شناسی') ? (Math.random() * 20).toFixed(2) : '';
-                const status = score ? 'اعلام شده' : 'اعلام نشده';
+                const status = score ? 'اعلام شده' : 'اعلام نشده'; // تغییر در اینجا
                 const lockStatus = ['قفل آموزش', 'اصلاح نمره'][Math.floor(Math.random() * 2)];
                 let courseType;
 
@@ -237,7 +284,7 @@
                     courseType = 'عملی/تئوری'; // برای ردیف سوم
                 }
 
-                const result = score && score >= 10 ? 'قبول' : '<span class="grade-red">رد</span>';
+                const result = score ? (score >= 10 ? 'قبول' : '<span class="grade-red">رد</span>') : 'اعلام نشده'; // تغییر در اینجا
 
                 const complaintMessage = (status === 'اعلام شده' && Math.random() < 0.3) ? complaints[Math.floor(Math.random() * complaints.length)] : '';
 

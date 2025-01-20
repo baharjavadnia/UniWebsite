@@ -1,0 +1,22 @@
+body {
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+nav a {
+    font-size: 14px;
+}
+
+#datetime {
+    font-size: 14px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+}
