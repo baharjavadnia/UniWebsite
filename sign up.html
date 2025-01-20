@@ -1,93 +1,213 @@
 <!DOCTYPE html>
-<html lang="fa">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="style 2 .css">
-        <title>فرم ثبت نام</title>
-    </head>
-    <body class="bg-gray-900 text-white flex items-center justify-center h-screen">
-        <div class="container mx-auto p-6 bg-gray-800 rounded-lg shadow-lg w-96">
-            <h2 class="text-center text-xl font-bold mb-4">سامانه دانشگاه خوارزمی</h2>
-            <form id="userTypeForm" class="mb-4">
-                <h2 class="text-lg font-semibold mb-2">نوع کاربر را انتخاب کنید</h2>
-                <label class="block mb-2">نوع کاربر:</label>
-                <select id="userType" class="block w-full p-2 mb-4 bg-gray-700 rounded" onchange="showRegistrationForm()">
-                    <option value="" selected disabled>انتخاب کنید</option>
-                    <option value="student">دانشجو</option>
-                    <option value="professor">استاد</option>
-                    <option value="staff">کادر دانشگاه</option>
-                </select>
-            </form>
-    
-            <form id="registrationForm" class="hidden">
-                <h2 class="text-lg font-semibold mb-2">فرم ثبت نام</h2>
-                <div id="userTypeDisplay" class="mb-2" style="display: none;"></div>
-                <button type="button" class="bg-blue-600 text-white rounded p-2 mb-4 w-full" onclick="goBackToUserType()">برگشت به انتخاب نوع کاربر</button>
-                <div id="formFields">
-                    <div class="mb-4">
-                        <label for="firstName" class="block mb-1">نام:</label>
-                        <input type="text" id="firstName" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^[A-Za-zآ-ی]+$/, 2, 50)" required>
-                        <span class="error-message text-red-500" id="firstNameError"></span>
-                    </div>
-                    <div class="mb-4">
-                        <label for="lastName" class="block mb-1">نام خانوادگی:</label>
-                        <input type="text" id="lastName" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^[A-Za-zآ-ی]+$/, 2, 50)" required>
-                        <span class="error-message text-red-500" id="lastNameError"></span>
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block mb-1">ایمیل:</label>
-                        <input type="email" id="email" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 0, 100)" required>
-                        <span class="error-message text-red-500" id="emailError"></span>
-                    </div>
-                    <div class="mb-4" id="studentIDGroup" style="display:none;">
-                        <label for="studentID" class="block mb-1">شماره دانشجویی:</label>
-                        <input type="text" id="studentID" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^\d{10}$/, 10, 10)" required>
-                        <span class="error-message text-red-500" id="studentIDError"></span>
-                    </div>
-                    <div class="mb-4" id="employeeIDGroup" style="display:none;">
-                        <label for="employeeID" class="block mb-1">شماره پرسنلی:</label>
-                        <input type="text" id="employeeID" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^\d{6,10}$/, 6, 10)" required>
-                        <span class="error-message text-red-500" id="employeeIDError"></span>
-                    </div>
-                    <div class="mb-4" id="nationalIDGroup" style="display:none;">
-                        <label for="nationalID" class="block mb-1">کد ملی:</label>
-                        <input type="text" id="nationalID" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^\d{10}$/, 10, 10)" required>
-                        <span class="error-message text-red-500" id="nationalIDError"></span>
-                    </div>
-                    <div class="mb-4" id="facultyGroup" style="display:none;">
-                        <label for="faculty" class="block mb-1">نام دانشکده:</label>
-                        <input type="text" id="faculty" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^[A-Za-zآ-ی ]+$/, 2, 50)" required>
-                        <span class="error-message text-red-500" id="facultyError"></span>
-                    </div>
-                    <div class="mb-4" id="majorGroup" style="display:none;">
-                        <label for="major" class="block mb-1">نام رشته:</label>
-                        <input type="text" id="major" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^[A-Za-zآ-ی ]+$/, 2, 50)" required>
-                        <span class="error-message text-red-500" id="majorError"></span>
-                    </div>
-                    <div class="mb-4">
-                        <label for="mobile" class="block mb-1">شماره موبایل:</label>
-                        <input type="text" id="mobile" class="block w-full p-2 bg-gray-700 rounded" oninput="validateInput(this, /^09\d{9}$/, 11, 11)" required>
-                        <span class="error-message text-red-500" id="mobileError"></span>
-                    </div>
-                    <div class="mb-4">
-                        <label for="password" class="block mb-1">رمز عبور:</label>
-                        <input type="password" id="password" class="block w-full p-2 bg-gray-700 rounded" oninput="validatePassword()" required>
-                        <span class="error-message text-red-500" id="passwordError"></span>
-                    </div>
-                    <div class="mb-4">
-                        <label for="confirmPassword" class="block mb-1">تایید رمز عبور:</label>
-                        <input type="password" id="confirmPassword" class="block w-full p-2 bg-gray-700 rounded" oninput="validateConfirmPassword()" required>
-                        <span class="error-message text-red-500" id="confirmPasswordError"></span>
-                    </div>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>فرم ثبت نام</title>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f3f4f6; /* Background color */
+            color: #000000; /* Default text color */
+            margin: 0; /* Remove default margin */
+            padding-bottom: 60px; /* Space for footer */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Make the body take up the full height */
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+        }
+
+        header {
+            background-color: #1e40af; /* Header background color */
+            position: fixed; /* Fix header at the top */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensure it stays above other elements */
+        }
+
+        .container {
+            background-color: #ffffff; /* Change background to white */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-height: 70vh; /* Limit the height of the card */
+            overflow-y: auto; /* Allow scrolling */
+            margin: 100px auto 20px; /* Center the card and add top margin for the fixed header */
+            width: 90%; /* Increase width of the card */
+            max-width: 800px; /* Set a max width */
+        }
+
+        footer {
+            background-color: #1E3A8A; /* Footer background color */
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%; /* Full width footer */
+        }
+
+        .bg-blue-800 {
+            background-color: #1E3A8A; /* Button background color same as footer */
+        }
+
+        .bg-gray-700 {
+            background-color: #c4d2ea; /* Input background color */
+        }
+
+        .success-message {
+            display: none; /* Hide initially */
+        }
+
+        .login-button {
+            background-color: #1E3A8A; /* Match footer color */
+            transition: transform 0.3s, background-color 0.3s; /* Animation for hover */
+        }
+
+        .login-button:hover {
+            transform: scale(1.04); /* Increase size on hover */
+            background-color: #1436a8; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <header class="flex justify-between items-center p-4 text-white"> 
+        <nav class="flex space-x-4 ml-auto"> 
+            <div class="flex space-x-4"> 
+                <a href="index.html" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
+                <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">اطلاعیه ها</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سیستم پشتیبانی</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">تماس با ما</a> 
+            </div> 
+        </nav> 
+        <div id="datetime" class="text-left ml-10"></div> 
+    </header>
+
+    <div class="container mx-auto p-6 rounded-lg shadow-lg w-full mt-10">
+        <h2 class="text-center text-xl font-bold mb-4">سامانه دانشگاه خوارزمی</h2>
+        <form id="userTypeForm" class="mb-4">
+            <h2 class="text-lg font-semibold mb-2">نوع کاربر را انتخاب کنید</h2>
+            <label class="block mb-2">نوع کاربر:</label>
+            <select id="userType" class="block w-full p-2 mb-4 bg-gray-700 rounded" onchange="showRegistrationForm()">
+                <option value="" selected disabled>انتخاب کنید</option>
+                <option value="student">دانشجو</option>
+                <option value="professor">استاد</option>
+                <option value="staff">کادر دانشگاه</option>
+            </select>
+        </form>
+
+        <form id="registrationForm" class="hidden">
+            <h2 class="text-lg font-semibold mb-2">فرم ثبت نام</h2>
+            <div id="userTypeDisplay" class="mb-2" style="display: none;"></div>
+           
+            <div id="formFields">
+                <div class="mb-4">
+                    <label for="firstName" class="block mb-1">نام:</label>
+                    <input type="text" id="firstName" class="block w-full p-2 bg-gray-700 rounded" required>
                 </div>
-                <button type="submit" id="submitButton" class="bg-gray-600 text-white rounded p-2 w-full transition-transform duration-300" onclick="alert('Redirecting to login page...')" disabled>ورود</button>
-                <div class="success-message bg-green-600 rounded p-2 mt-4 hidden" id="successMessage">
-                    <span class="icon">ثبت نام با موفقیت انجام شد!</span> ثبت نام با موفقیت انجام شد!
+                <div class="mb-4">
+                    <label for="lastName" class="block mb-1">نام خانوادگی:</label>
+                    <input type="text" id="lastName" class="block w-full p-2 bg-gray-700 rounded" required>
                 </div>
-                <button type="button" class="bg-blue-500 text-white rounded p-2 mt-4 w-full" onclick="alert('Redirecting to login page...')">ورود کاربران</button>
-            </form>
+                <div class="mb-4">
+                    <label for="email" class="block mb-1">ایمیل:</label>
+                    <input type="email" id="email" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4" id="studentIDGroup" style="display:none;">
+                    <label for="studentID" class="block mb-1">شماره دانشجویی:</label>
+                    <input type="text" id="studentID" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4" id="employeeIDGroup" style="display:none;">
+                    <label for="employeeID" class="block mb-1">شماره پرسنلی:</label>
+                    <input type="text" id="employeeID" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4" id="nationalIDGroup" style="display:none;">
+                    <label for="nationalID" class="block mb-1">کد ملی:</label>
+                    <input type="text" id="nationalID" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4" id="facultyGroup" style="display:none;">
+                    <label for="faculty" class="block mb-1">نام دانشکده:</label>
+                    <input type="text" id="faculty" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4" id="majorGroup" style="display:none;">
+                    <label for="major" class="block mb-1">نام رشته:</label>
+                    <input type="text" id="major" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="mobile" class="block mb-1">شماره موبایل:</label>
+                    <input type="text" id="mobile" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block mb-1">رمز عبور:</label>
+                    <input type="password" id="password" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+                <div class="mb-4">
+                    <label for="confirmPassword" class="block mb-1">تایید رمز عبور:</label>
+                    <input type="password" id="confirmPassword" class="block w-full p-2 bg-gray-700 rounded" required>
+                </div>
+            </div>
+            <button type="submit" id="submitButton" class="login-button text-white rounded p-2 w-full transition-transform duration-300 hover:scale-105">ورود</button>
+           <a href="login.html"> <button type="login"  class="login-button text-white rounded p-2 mt-2 w-full ">ورود کاربران</button></a>
+            <div class="success-message bg-green-600 rounded p-2 mt-4" id="successMessage">
+
+                <span class="icon">ثبت نام با موفقیت انجام شد!</span>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <div class="max-w-6xl mx-auto text-center p-4">
+            <p class="text-sm">© 2025 دانشکده هنر و معماری. تمامی حقوق محفوظ است.</p>
+            <p class="text-sm">طراحی و توسعه توسط تیم فنی دانشگاه خوارزمی</p>
         </div>
-        <script src="script.js"></script>
-    </body>
+    </footer>
+
+    <script>
+        function showRegistrationForm() {
+            const userType = document.getElementById('userType').value;
+            document.getElementById('registrationForm').classList.remove('hidden');
+            document.getElementById('studentIDGroup').style.display = userType === 'student' ? 'block' : 'none';
+            document.getElementById('employeeIDGroup').style.display = userType === 'professor' ? 'block' : 'none';
+            document.getElementById('nationalIDGroup').style.display = userType === 'staff' ? 'block' : 'none';
+            document.getElementById('facultyGroup').style.display = userType === 'professor' ? 'block' : 'none';
+            document.getElementById('majorGroup').style.display = userType === 'student' ? 'block' : 'none';
+        }
+
+        function handleRegistration(event) {
+            event.preventDefault(); // Prevent form submission
+            const userType = document.getElementById('userType').value;
+
+            // Validate fields here and check for errors
+            const isValid = true; // Assume validation passed for this example
+
+            if (isValid) {
+                let redirectUrl = '';
+                if (userType === 'student') {
+                    redirectUrl = 'studentdashboard.html';
+                } else if (userType === 'professor') {
+                    redirectUrl = 'teacherdashboard.html';
+                } else if (userType === 'staff') {
+                    redirectUrl = 'staffdashboard.html'; // Replace with actual link for staff
+                }
+
+                window.location.href = redirectUrl; // Redirect to the appropriate dashboard
+            }
+        }
+
+        function updateTime() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+            document.getElementById('datetime').innerText = now.toLocaleString('fa-IR', options);
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>

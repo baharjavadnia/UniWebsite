@@ -1,59 +1,85 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سیستم ورود نمره</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <head>
     <style>
         body {
             font-family: 'Vazirmatn', sans-serif;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            transition: background-color 0.5s, color 0.5s;
         }
-    
-        .hover-effect:hover {
-            background-color: #E5E7EB; /* رنگ مشابه صفحه قبلی */
+
+        .status-link {
+            transition: background-color 0.3s, color 0.3s, font-weight 0.3s;
+            display: block;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: end; /* وسط چین کردن متن */
+            cursor: pointer; /* نشانگر ماوس شبیه دست شود */
         }
-    
+
+        .status-link:hover {
+            background-color: #1e40b0; /* رنگ پس‌زمینه در حالت هاور */
+            color: white;
+            font-weight: bold; /* بولد کردن متن */
+        }
+
+        .status-column:hover {
+            background-color: #1e40b0; /* رنگ کل ستون در حالت هاور */
+        }
+
+        .odd-row {
+            background-color: #f0f4ff;
+        }
+
+        .even-row {
+            background-color: #ffffff;
+        }
+
         .modal {
             max-height: 80vh;
             overflow-y: auto;
         }
-    
+
         .grade-red {
             color: red;
         }
-    
+
         .hover-grade {
             cursor: pointer;
             transition: color 0.3s, transform 0.3s;
         }
+
         .hover-grade:hover {
-            color: #2563EB; /* آبی مشابه صفحه قبلی */
+            color: #2563EB;
             transform: scale(1.2);
         }
-    
+
         .hover-message {
             cursor: pointer;
             transition: color 0.3s, transform 0.3s;
         }
+
         .hover-message:hover {
-            color: #EF4444; /* قرمز مشابه صفحه قبلی */
+            color: #EF4444;
             transform: scale(1.5);
         }
-    
+
         nav a {
             font-size: 14px;
         }
-    
+
         #datetime {
             font-size: 14px;
         }
-    
+
         .back-button {
             background-color: #1e40b0; /* Matches the header color */
             color: white;
@@ -63,26 +89,28 @@
             cursor: pointer;
             transition: transform 0.3s;
         }
+
         .back-button:hover {
-            transform: scale(1.1);
+            transform: scale(1.1); /* بزرگ کردن دکمه در حالت هاور */
         }
-    
+
         table {
             border-collapse: collapse;
             width: 100%;
         }
-    
-        th, td {
+
+        th,
+        td {
             border: 1px solid #D1D5DB;
             padding: 8px;
-            text-align: right;
+            text-align: right; /* راست‌چین کردن متن در جدول */
         }
-    
+
         th {
             background-color: #1E3A8A;
             color: white;
         }
-    
+
         footer {
             margin-top: auto;
             background-color: #1E3A8A;
@@ -91,28 +119,28 @@
             text-align: center;
         }
     </style>
-    
-</head>
-<body class="bg-gray-100">
 
-    <header class="flex justify-between items-center p-4 bg-blue-800 text-white"> 
-        <div id="datetime" class="text-left ml-10"></div> 
+</head>
+
+<body class="bg-blue-50">
+
+    <header class="flex justify-between items-center p-4 bg-blue-800 text-white">
+        <div id="datetime" class="text-left ml-10"></div>
         <nav class="flex space-x-4 ml-auto"> 
             <div class="flex space-x-4"> 
-                <a href="#" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
-                <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار</a> 
-                <a href="#" class="hover:text-gray-300 pr-10">اطلاعیه ها</a> 
-                <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش</a> 
-                <a href="#" class="hover:text-gray-300 pr-10">سیستم پشتیبانی</a> 
-                <a href="#" class="hover:text-gray-300 pr-10">تماس با ما</a> 
+                <a href="#" class="hover:text-gray-300 mr-10"> تماس با ما</a>  
+                <a href="#" class="hover:text-gray-300 pr-10">سیستم پشتیبانی </a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش </a> 
+                <a href="#" class="hover:text-gray-300 pr-10"> اطلاعیه ها </a> 
+                <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار </a> 
+                <a href="index.html" class="hover:text-gray-300 pr-10">صفحه ی اصلی  </a> 
             </div> 
         </nav> 
     </header>
-    
 
     <div class="container mx-auto mt-12 mb-8 flex-grow">
-        <a href="teacher info.html" class="back-button mb-4">بازگشت</a>
-        
+        <button class="back-button mb-4" onclick="window.history.back()">بازگشت</button>
+
         <div class="bg-white shadow-lg rounded-lg p-5 mt-4">
             <h1 class="text-xl text-right font-bold mb-5">جدول تدریس</h1>
             <table class="w-full text-right border-collapse">
@@ -134,7 +162,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="hover-effect">
+                    <tr class="odd-row">
                         <td class="border px-4 py-2"><a href="#" class="text-red-600 hover:text-red-800">💬 2</a></td>
                         <td class="border px-4 py-2">۱۴۰۳/۱۰/۱۸</td>
                         <td class="border px-4 py-2">فعال</td>
@@ -142,14 +170,14 @@
                         <td class="border px-4 py-2">10</td>
                         <td class="border px-4 py-2">15</td>
                         <td class="border px-4 py-2">25</td>
-                        <td class="border px-4 py-2">عملی</td>
+                        <td class="border px-4 py-2 status-column">عملی</td>
                         <td class="border px-4 py-2">3</td>
                         <td class="border px-4 py-2">نیمسال 1</td>
                         <td class="border px-4 py-2">101</td>
-                        <td class="border px-4 py-2"><a href="#" class="text-blue-600 hover:bg-blue-200" onclick="openModal('تصویر سازی', this)">تصویر سازی</a></td>
+                        <td class="border px-4 py-2 status-column"><div class="status-link" onclick="openModal('تصویر سازی', this)">تصویر سازی</div></td>
                         <td class="border px-4 py-2">1</td>
                     </tr>
-                    <tr class="hover-effect">
+                    <tr class="even-row">
                         <td class="border px-4 py-2"><a href="#" class="text-red-600 hover:text-red-800">💬 1</a></td>
                         <td class="border px-4 py-2">۱۴۰۳/۰۹/۲۸</td>
                         <td class="border px-4 py-2">فعال</td>
@@ -157,14 +185,14 @@
                         <td class="border px-4 py-2">12</td>
                         <td class="border px-4 py-2">17</td>
                         <td class="border px-4 py-2">30</td>
-                        <td class="border px-4 py-2">عملی</td>
+                        <td class="border px-4 py-2 status-column">عملی</td>
                         <td class="border px-4 py-2">3</td>
                         <td class="border px-4 py-2">نیمسال 1</td>
                         <td class="border px-4 py-2">102</td>
-                        <td class="border px-4 py-2"><a href="#" class="text-blue-600 hover:bg-blue-200" onclick="openModal('طراحی کاراکتر', this)">طراحی کاراکتر</a></td>
+                        <td class="border px-4 py-2 status-column"><div class="status-link" onclick="openModal('طراحی کاراکتر', this)">طراحی کاراکتر</div></td>
                         <td class="border px-4 py-2">2</td>
                     </tr>
-                    <tr class="hover-effect">
+                    <tr class="odd-row">
                         <td class="border px-4 py-2"><a href="#" class="text-red-600 hover:text-red-800">💬 0</a></td>
                         <td class="border px-4 py-2">۱۴۰۳/۱۰/۰۲</td>
                         <td class="border px-4 py-2">فعال</td>
@@ -172,11 +200,11 @@
                         <td class="border px-4 py-2">9</td>
                         <td class="border px-4 py-2">-</td>
                         <td class="border px-4 py-2">20</td>
-                        <td class="border px-4 py-2">عملی/تئوری</td>
+                        <td class="border px-4 py-2 status-column">عملی/تئوری</td>
                         <td class="border px-4 py-2">3</td>
                         <td class="border px-4 py-2">نیمسال 1</td>
                         <td class="border px-4 py-2">103</td>
-                        <td class="border px-4 py-2"><a href="#" class="text-blue-600 hover:bg-blue-200" onclick="openModal('مبانی رنگ شناسی', this)">مبانی رنگ شناسی</a></td>
+                        <td class="border px-4 py-2 status-column"><div class="status-link" onclick="openModal('مبانی رنگ شناسی', this)">مبانی رنگ شناسی</div></td>
                         <td class="border px-4 py-2">3</td>
                     </tr>
                 </tbody>
@@ -224,8 +252,8 @@
 
     <footer class="bg-blue-800 text-white p-4">
         <div class="max-w-6xl mx-auto text-center">
-            <p>© 2025 دانشکده هنر و معماری. تمامی حقوق محفوظ است.</p>
-            <p>طراحی و توسعه توسط تیم فنی دانشگاه دانشگه خوارزمی</p>
+            <p class="text-sm">© 2025 دانشکده هنر و معماری. تمامی حقوق محفوظ است.</p>
+            <p class="text-sm">طراحی و توسعه توسط تیم فنی دانشگاه خوارزمی</p>
         </div>
     </footer>
 
@@ -393,4 +421,5 @@
         updateDateTime(); // اجرای اولیه برای نمایش تاریخ و ساعت
     </script>
 </body>
+
 </html>

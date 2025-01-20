@@ -1,65 +1,69 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Kharazmi University</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="styles1.css">
+    <link rel="st" href="teacherdashboard.html">
     
+    <style>
+        body {
+            font-family: 'X Yekan', sans-serif; /* Set the font to Yekan */
+            transition: background-color 0.5s, color 0.5s;
+        }
+        
+        nav a {
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: rgba(0, 255, 0, 0.8); /* Change color on hover */
+        }
+
+        .login-button {
+            transition: transform 0.3s;
+        }
+
+        .login-button:hover {
+            transform: scale(1.1); /* Increase size on hover */
+        }
+
+        .card-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: calc(100vh - 200px); /* Adjust height to fit footer */
+        }
+
+    </style>
 </head>
-<body class="light-mode">
+<body class="bg-blue-50 ">
 
-    <!-- Navigation Bar -->
-    <nav class="flex justify-between items-center p-4 bg-gray-800 text-white">
-        <div class="flex items-center">
-            <span id="date-time" class="text-green-400"></span>
-            <div class="relative">
-                <button id="date-menu-button" class="text-green-400">تاریخ</button>
-                <div id="date-menu" class="hidden absolute bg-gray-900 text-white rounded shadow-lg mt-2">
-                    <button class="px-4 py-2 hover:bg-gray-800" onclick="setDateType('shamsi')">تاریخ شمسی</button>
-                    <button class="px-4 py-2 hover:bg-gray-800" onclick="setDateType('miladi')">تاریخ میلادی</button>
-                </div>
-            </div>
-        </div>
-        <div class="flex items-center space-x-6">
-            <a href="index.html" class="text-green-400">خانه</a>
-            <a href="#" class="text-green-400" onclick="reportIssue()">گزارش مشکل</a>
-            <div class="relative">
-                <button id="language-button" class="text-green-400">تغییر زبان</button>
-                <div id="language-menu" class="hidden absolute bg-gray-900 text-white rounded shadow-lg mt-2">
-                    <button class="px-4 py-2 hover:bg-gray-800" onclick="setLanguage('fa')">فارسی</button>
-                    <button class="px-4 py-2 hover:bg-gray-800" onclick="setLanguage('en')">انگلیسی</button>
-                </div>
-            </div>
-            <div class="relative">
-                <button id="theme-button" class="text-green-400">تغییر مد سایت</button>
-                <div id="theme-menu" class="hidden absolute bg-gray-900 text-white rounded shadow-lg mt-2">
-                    <button class="flex items-center px-4 py-2 hover:bg-gray-800" onclick="setTheme('light')">
-                        <span class="material-icons mr-2">wb_sunny</span>حالت روز
-                    </button>
-                    <button class="flex items-center px-4 py-2 hover:bg-gray-800" onclick="setTheme('dark')">
-                        <span class="material-icons mr-2">nights_stay</span>حالت شب
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <header class="flex justify-between items-center p-4 bg-blue-800 text-white"> 
+        <nav class="flex space-x-4 ml-auto"> 
+            <div class="flex space-x-4"> 
+                <a href="index.html" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
+                <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">اطلاعیه ها</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">سیستم پشتیبانی</a> 
+                <a href="#" class="hover:text-gray-300 pr-10">تماس با ما</a> 
+            </div> 
+        </nav> 
+        <div id="datetime" class="text-left ml-10"></div> 
+    </header>
 
-    <!-- Title -->
     <div class="text-center my-6">
-        <h1 class="text-4xl font-bold">دانشگاه خوارزمی</h1>
+        <h1 class="text-4xl font-bold text-blue-800">دانشگاه خوارزمی</h1>
     </div>
 
-    <!-- Login Card -->
-    <div class="flex justify-center items-center h-screen">
-        <div class="bg-gray-600 p-6 rounded-lg shadow-lg w-96">
-            <h2 class="text-2xl font-bold mb-4">ورود به سامانه</h2>
+    <div class="card-container">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 mx-auto">
+            <h2 class="text-2xl font-bold mb-4 text-blue-800">ورود به سامانه</h2>
             <div class="mb-4">
-                <select id="userType" class="block w-full p-2 border rounded bg-gray-800 text-white" onchange="toggleFields()">
+                <select id="userType" class="block w-full p-2 border rounded bg-gray-200 text-gray-800" onchange="toggleFields()">
                     <option value="" disabled selected>نوع کاربر را انتخاب کنید</option>
                     <option value="student">دانشجو</option>
                     <option value="teacher">استاد</option>
@@ -67,78 +71,31 @@
                 </select>
             </div>
             <div id="studentFields" class="hidden">
-                <input type="text" id="studentId" placeholder="شماره دانشجویی" maxlength="10" class="block w-full p-2 mb-4 border rounded bg-gray-800 text-white" oninput="validateNumber(this)">
-                <input type="password" id="passwordStudent" placeholder="رمز عبور" class="block w-full p-2 mb-4 border rounded bg-gray-800 text-white">
+                <input type="text" id="studentId" placeholder="شماره دانشجویی" maxlength="10" class="block w-full p-2 mb-4 border rounded bg-gray-200 text-gray-800" oninput="validateNumber(this)">
+                <input type="password" id="passwordStudent" placeholder="رمز عبور" class="block w-full p-2 mb-4 border rounded bg-gray-200 text-gray-800">
             </div>
             <div id="teacherFields" class="hidden">
-                <input type="text" id="teacherId" placeholder="شماره پرسنلی" maxlength="10" class="block w-full p-2 mb-4 border rounded bg-gray-800 text-white" oninput="validateNumber(this)">
-                <input type="password" id="passwordTeacher" placeholder="رمز عبور" class="block w-full p-2 mb-4 border rounded bg-gray-800 text-white">
+                <input type="text" id="teacherId" placeholder="شماره پرسنلی" maxlength="10" class="block w-full p-2 mb-4 border rounded bg-gray-200 text-gray-800" oninput="validateNumber(this)">
+                <input type="password" id="passwordTeacher" placeholder="رمز عبور" class="block w-full p-2 mb-4 border rounded bg-gray-200 text-gray-800">
             </div>
             <div id="staffFields" class="hidden">
-                <input type="text" id="staffId" placeholder="شماره پرسنلی" maxlength="10" class="block w-full p-2 mb-4 border rounded bg-gray-800 text-white" oninput="validateNumber(this)">
-                <input type="password" id="passwordStaff" placeholder="رمز عبور" class="block w-full p-2 mb-4 border rounded bg-gray-800 text-white">
+                <input type="text" id="staffId" placeholder="شماره پرسنلی" maxlength="10" class="block w-full p-2 mb-4 border rounded bg-gray-200 text-gray-800" oninput="validateNumber(this)">
+                <input type="password" id="passwordStaff" placeholder="رمز عبور" class="block w-full p-2 mb-4 border rounded bg-gray-200 text-gray-800">
             </div>
-            <button class="bg-green-500 text-white px-4 py-2 rounded-lg w-full" onclick="validateLogin()">ورود</button>
-            <p class="mt-4 text-center"><a href="#" class="text-green-400">ثبت نام</a></p>
+            <button class="bg-blue-800 text-white px-4 py-2 rounded-lg w-full login-button" onclick="validateLogin()">ورود</button>
+            <p class="mt-4 text-center"><a href="sign up.html" class="text-blue-500">ثبت نام</a></p>
             <div id="error-message" class="text-red-500 mt-4 hidden"></div>
         </div>
     </div>
 
-    <!-- Accessibility Icon -->
-   <!-- Accessibility Icon -->
-   <div class="fixed bottom-6 right-6 animate-bounce">
-    <span class="material-icons h-16 cursor-pointer" onclick="toggleAccessibilityMenu()">accessible_forward</span>
-    <div id="accessibility-menu" class="hidden absolute bg-gray-900 text-white rounded shadow-lg -mt-32 right-0">
-        <button class="flex items-center px-4 py-2 hover:bg-gray-800" onclick="setTheme('light')" title="حالت روز">
-            <span class="material-icons">wb_sunny</span>
-        </button>
-        <button class="flex items-center px-4 py-2 hover:bg-gray-800" onclick="setTheme('dark')" title="حالت شب">
-            <span class="material-icons">nights_stay</span>
-        </button>
-        <button class="flex items-center px-4 py-2 hover:bg-gray-800" onclick="zoomIn()" title="بزرگنمایی">
-            <span class="material-icons">zoom_in</span>
-        </button>
-        <button class="flex items-center px-4 py-2 hover:bg-gray-800" onclick="zoomOut()" title="کوچک‌نمایی">
-            <span class="material-icons">zoom_out</span>
-        </button>
-    </div>
-</div>
-
-<script>
-    function toggleAccessibilityMenu() {
-        const menu = document.getElementById('accessibility-menu');
-        menu.classList.toggle('hidden');
-    }
-
-    function setTheme(theme) {
-        if (theme === 'light') {
-            document.body.classList.remove('dark-mode');
-            document.body.classList.add('light-mode');
-        } else {
-            document.body.classList.remove('light-mode');
-            document.body.classList.add('dark-mode');
-        }
-    }
-
-    function zoomIn() {
-        document.body.style.zoom = "110%";
-    }
-
-    function zoomOut() {
-        document.body.style.zoom = "90%";
-    }
-</script>
+    <footer class="bg-blue-800 text-white p-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-sm">© 2025 دانشکده هنر و معماری. تمامی حقوق محفوظ است.</p>
+            <p class="text-sm">طراحی و توسعه توسط تیم فنی دانشگاه خوارزمی</p>
+        </div>
+    </footer>
 
     <script>
-        // Display current date and time
-        function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('date-time').innerText = now.toLocaleDateString('fa-IR', options);
-        }
-        updateDateTime();
-
-        // Toggle input fields based on user type
         function toggleFields() {
             const userType = document.getElementById('userType').value;
             document.getElementById('studentFields').classList.add('hidden');
@@ -155,16 +112,14 @@
             }
         }
 
-        // Validate number input using regex
         function validateNumber(input) {
-            const regex = /^[0-9]{0,10}$/; // Allow only numeric input up to 10 characters
+            const regex = /^[0-9]{0,10}$/;
             if (!regex.test(input.value)) {
                 alert("هشدار: مقدار ورودی قابل قبول نیست.");
-                input.value = input.value.slice(0, 10); // Limit input to 10 characters
+                input.value = input.value.slice(0, 10);
             }
         }
 
-        // Validate login input
         function validateLogin() {
             const userType = document.getElementById('userType').value;
             let valid = true;
@@ -175,6 +130,7 @@
                 valid = false;
             }
 
+            let dashboardUrl = '';
             if (userType === 'student') {
                 const studentId = document.getElementById('studentId').value;
                 const password = document.getElementById('passwordStudent').value;
@@ -184,16 +140,32 @@
                 } else if (!/^[0-9]{10}$/.test(studentId)) {
                     errorMessage = 'شماره دانشجویی باید شامل 10 عدد باشد.';
                     valid = false;
+                } else {
+                    dashboardUrl = 'studentdashboard.html';
                 }
-            } else if (userType === 'teacher' || userType === 'staff') {
+            } else if (userType === 'teacher') {
+                const teacherId = document.getElementById('teacherId').value;
+                const password = document.getElementById('passwordTeacher').value;
+                if (!teacherId || !password) {
+                    errorMessage = 'لطفاً تمام فیلدها را پر کنید.';
+                    valid = false;
+                } else if (!/^[0-9]{10}$/.test(teacherId)) {
+                    errorMessage = 'شماره پرسنلی باید شامل 10 عدد باشد.';
+                    valid = false;
+                } else {
+                    dashboardUrl = 'teacherdashboard.html';
+                }
+            } else if (userType === 'staff') {
                 const staffId = document.getElementById('staffId').value;
-                const password = userType === 'teacher' ? document.getElementById('passwordTeacher').value : document.getElementById('passwordStaff').value;
+                const password = document.getElementById('passwordStaff').value;
                 if (!staffId || !password) {
                     errorMessage = 'لطفاً تمام فیلدها را پر کنید.';
                     valid = false;
                 } else if (!/^[0-9]{10}$/.test(staffId)) {
                     errorMessage = 'شماره پرسنلی باید شامل 10 عدد باشد.';
                     valid = false;
+                } else {
+                    dashboardUrl = 'staffdashboard.html'; // لینک مربوط به کادر دانشگاه
                 }
             }
 
@@ -201,85 +173,12 @@
                 document.getElementById('error-message').innerText = errorMessage;
                 document.getElementById('error-message').classList.remove('hidden');
             } else {
-                alert("ورود موفقیت آمیز!");
-                // Proceed with login (you can implement your login logic here)
+                window.location.href = dashboardUrl; // انتقال به صفحه مربوطه
             }
         }
-
-        // Set theme (light or dark)
-        function setTheme(theme) {
-            if (theme === 'light') {
-                document.body.classList.remove('dark-mode');
-                document.body.classList.add('light-mode');
-            } else {
-                document.body.classList.remove('light-mode');
-                document.body.classList.add('dark-mode');
-            }
-        }
-
-        // Change Language function
-        function setLanguage(lang) {
-            if (lang === 'en') {
-                document.body.innerHTML = document.body.innerHTML.replace(/دانشگاه خوارزمی/g, "Kharazmi University")
-                    .replace(/ورود به سامانه/g, "Login to the System")
-                    .replace(/تاریخ/g, "Date")
-                    .replace(/خانه/g, "Home")
-                    .replace(/گزارش مشکل/g, "Report Issue")
-                    .replace(/تغییر زبان/g, "Change Language")
-                    .replace(/ورود/g, "Login")
-                    .replace(/ثبت نام/g, "Register");
-            } else if (lang === 'fa') {
-                location.reload(); // Reload to revert to Persian
-            }
-        }
-
-        // Show/hide theme menu
-        document.getElementById('theme-button').addEventListener('click', function() {
-            const menu = document.getElementById('theme-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Show/hide date menu
-        document.getElementById('date-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('date-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Show/hide language menu
-        document.getElementById('language-button').addEventListener('click', function() {
-            const menu = document.getElementById('language-menu');
-            menu.classList.toggle('hidden');
-        });
-
-        // Show/hide accessibility menu
-        function toggleAccessibilityMenu() {
-            const menu = document.getElementById('accessibility-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Zoom in functionality
-        function zoomIn() {
-            document.body.style.zoom = "110%";
-        }
-
-        // Zoom out functionality
-        function zoomOut() {
-            document.body.style.zoom = "90%";
-        }
-
-        // Change date type
-        function setDateType(type) {
-            if (type === 'shamsi') {
-                alert("تاریخ شمسی انتخاب شد.");
-            } else {
-                alert("تاریخ میلادی انتخاب شد.");
-            }
-        }
-
-        // Report issue function
-        function reportIssue() {
-            alert("لطفاً مشکل خود را گزارش دهید.");
-        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        
     </script>
 
 </body>
