@@ -17,14 +17,24 @@
         }
         .table-row:nth-child(even) {
             background-color: white; /* رنگ پس‌زمینه ردیف‌های زوج */
+
         }
+        
+        .back-button-container {
+    position: absolute;
+    bottom: 20px; /* فاصله از پایین صفحه */
+    left: 16px; /* فاصله از سمت چپ صفحه */
+}
+
+
+
     </style>
 </head>
 <body class="bg-blue-50">
     <header class="flex justify-between items-center p-4 bg-blue-800 text-white"> 
         <nav class="flex space-x-4 ml-auto"> 
             <div class="flex space-x-4"> 
-                <a href="#" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
+                <a href="index.html" class="hover:text-gray-300 mr-10">صفحه اصلی</a>  
                 <a href="#" class="hover:text-gray-300 pr-10">آرشیو اخبار</a> 
                 <a href="#" class="hover:text-gray-300 pr-10">اطلاعیه ها</a> 
                 <a href="#" class="hover:text-gray-300 pr-10">سایت آموزش</a> 
@@ -34,8 +44,10 @@
         </nav> 
         <div id="datetime" class="text-left ml-10"></div> 
     </header>
-
+  
+    
     <main class="flex justify-center p-6">
+
         <section class="w-full max-w-5xl mx-auto">
             <h2 class="text-xl font-bold mb-4">اطلاعات جامع دانشجو</h2>
             <div class="bg-white shadow-md rounded-lg p-6">
@@ -86,7 +98,7 @@
                             <tr class="table-row">
                                 <td class="border border-blue-200 p-2 text-center">۱</td>
                                 <td class="border border-blue-200 p-2">۱</td>
-                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='page1.html'">به اتمام رسیده</td>
+                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='termstudent1.html'">به اتمام رسیده</td>
                                 <td class="border border-blue-200 p-2">۱۷</td>
                                 <td class="border border-blue-200 p-2">۱۷</td>
                                 <td class="border border-blue-200 p-2">۰</td>
@@ -100,7 +112,7 @@
                             <tr class="table-row">
                                 <td class="border border-blue-200 p-2 text-center">۲</td>
                                 <td class="border border-blue-200 p-2">۲</td>
-                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='page2.html'">به اتمام رسیده</td>
+                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='termstudent2.html'">به اتمام رسیده</td>
                                 <td class="border border-blue-200 p-2">۱۵</td>
                                 <td class="border border-blue-200 p-2">۳۲</td>
                                 <td class="border border-blue-200 p-2">۰</td>
@@ -114,7 +126,7 @@
                             <tr class="table-row">
                                 <td class="border border-blue-200 p-2 text-center">۳</td>
                                 <td class="border border-blue-200 p-2">۳</td>
-                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='page3.html'">به اتمام رسیده</td>
+                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='termstudent3.html'">به اتمام رسیده</td>
                                 <td class="border border-blue-200 p-2">۱۸</td>
                                 <td class="border border-blue-200 p-2">۵۰</td>
                                 <td class="border border-blue-200 p-2">۰</td>
@@ -128,7 +140,7 @@
                             <tr class="table-row">
                                 <td class="border border-blue-200 p-2 text-center">۴</td>
                                 <td class="border border-blue-200 p-2">۴</td>
-                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='page4.html'">مشغول به تحصیل</td>
+                                <td class="border border-blue-200 p-2 term-cell" onclick="location.href='termstudent4.html'">مشغول به تحصیل</td>
                                 <td class="border border-blue-200 p-2">۱۹</td>
                                 <td class="border border-blue-200 p-2">۶۹</td>
                                 <td class="border border-blue-200 p-2">۳</td>
